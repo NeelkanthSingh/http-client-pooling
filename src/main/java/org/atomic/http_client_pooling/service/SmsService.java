@@ -16,11 +16,13 @@ public class SmsService {
   @Autowired
   private ObjectMapper mapper;
 
+  @Autowired
+  private CloseableHttpClient httpClient;
+
   public ResponseEntity<SmsResponse> getAllSms() throws Exception {
-    try(CloseableHttpClient httpClient = HttpClients.createDefault()){
-      HttpGet httpGet = new HttpGet("https://api.versionvaulthub.com/sms/getAll");
-      httpGet.setHeader("Content-Type", "application/json");
-      CloseableHttpResponse response = httpClient.execute(httpGet);
+    HttpGet httpGet = new HttpGet("https://api.versionvaulthub.com/sms/getAll");
+    httpGet.setHeader("Content-Type", "application/json");
+    try(CloseableHttpResponse response = httpClient.execute(httpGet)) {
       return ResponseEntity.ok(mapper.readValue(response.getEntity().getContent(), SmsResponse.class));
     } catch (Exception e) {
       throw new RuntimeException(e);
