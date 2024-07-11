@@ -15,8 +15,8 @@ public class HttpClientConfig {
   private static final Integer CONNECTION_REQUEST_TIMEOUT = 30000;
   private static final Integer CONNECT_TIMEOUT = 30000;
   private static final Integer SOCKET_TIMEOUT = 30000;
-  private static final Integer MAX_TOTAL_CONNECTIONS = 30;
-  private static final Integer MAX_CONNECTIONS_PER_ROUTE = 25;
+  private static final Integer MAX_TOTAL_CONNECTIONS = 50;
+  private static final Integer MAX_CONNECTIONS_PER_ROUTE = 40;
   private static final Integer VALIDATE_AFTER_INACTIVITY = 1000;
   private static final Integer DEFAULT_KEEP_ALIVE_DURATION = 5000;
   private static final Integer MAX_RETRIES = 3;
