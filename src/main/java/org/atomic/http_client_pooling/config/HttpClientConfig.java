@@ -12,8 +12,8 @@ public class HttpClientConfig {
   @Bean
   public PoolingHttpClientConnectionManager poolingHttpClientConnectionManager() {
     PoolingHttpClientConnectionManager poolingConnectionManager = new PoolingHttpClientConnectionManager();
-    poolingConnectionManager.setMaxTotal(5);
-    poolingConnectionManager.setDefaultMaxPerRoute(4);
+    poolingConnectionManager.setMaxTotal(50);
+    poolingConnectionManager.setDefaultMaxPerRoute(40);
     return poolingConnectionManager;
   }
 
