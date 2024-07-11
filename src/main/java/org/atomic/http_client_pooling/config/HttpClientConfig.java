@@ -2,7 +2,6 @@ package org.atomic.http_client_pooling.config;
 
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -42,12 +41,10 @@ public class HttpClientConfig {
 
   @Bean
   public CloseableHttpClient httpClient(PoolingHttpClientConnectionManager poolingConnectionManager) {
-    ConnectionKeepAliveStrategy keepAliveStrategy = new CustomConnectionKeepAliveStrategy(DEFAULT_KEEP_ALIVE_DURATION);
     HttpRequestRetryHandler retryHandler = new CustomHttpRequestRetryHandler(MAX_RETRIES, RETRY_INTERVAL);
 
     return HttpClients.custom()
         .setConnectionManager(poolingConnectionManager)
-        .setKeepAliveStrategy(keepAliveStrategy)
         .setRetryHandler(retryHandler)
         .build();
   }
